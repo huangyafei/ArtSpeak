@@ -78,7 +78,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-5xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Twitter Bio Generator</title>
+        <title>当代艺术语言生成器</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
