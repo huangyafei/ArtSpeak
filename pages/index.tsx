@@ -76,93 +76,91 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="flex max-w-5xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
-      <Head>
-        <title>当代艺术语言生成器</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div className="bg-yellow-300">
+      <div className="flex max-w-5xl mx-auto flex-col items-center justify-center py-2 min-h-screen bg-yellow-300 text-blue-700">
+        <Head>
+          <title>当代艺术语言生成器</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <Header />
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mt-20">
-        <a
-          className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-gray-600 shadow-md transition-colors hover:bg-gray-100 mb-5"
-          href="https://github.com/huangyafei/ArtSpeak"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Github />
-          <p>Star on GitHub</p>
-        </a>
-        <h1 className="sm:text-6xl text-4xl max-w-[708px] font-bold text-slate-900">
-          将你的句子用当代艺术的语言输出
-        </h1>
-        <div className="max-w-xl w-full">
-          <div className="flex mt-10 items-center space-x-3">
-            <p className="text-left font-medium">
-              输入你的句子{" "}
-              <span className="text-slate-500">
-                (什么都可以)
-              </span>
-              .
-            </p>
+        <Header />
+        <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mt-20">
+          <a
+            className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-blue-700 px-4 py-2 text-sm text-blue-700 shadow-md transition-colors hover:bg-gray-100 mb-5"
+            href="https://github.com/huangyafei/ArtSpeak"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Github />
+            <p>Star on GitHub</p>
+          </a>
+          <h1 className="sm:text-4xl text-3xl max-w-[708px] font-bold">
+            将你的句子用当代艺术的语言输出
+          </h1>
+          <div className="max-w-xl w-full">
+            <div className="flex mt-10 items-center space-x-3">
+              <p className="text-left font-medium">
+                输入你的句子 <span>(什么都可以)</span>.
+              </p>
+            </div>
+            <textarea
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+              rows={4}
+              className="w-full rounded-md border-blue-700 shadow-sm focus:border-blue-700 focus:ring-blue-700 my-5 bg-yellow-300 placeholder:text-blue-700"
+              placeholder={"e.g. " + defultDesc}
+            />
+
+            {!loading && (
+              <button
+                className="border border-blue-700 rounded-xl text-blue-700 font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-blue-700 hover:text-yellow-300 w-full"
+                onClick={(e) => generateDesc(e)}
+              >
+                呼唤当代艺术大神 &rarr;
+              </button>
+            )}
+            {loading && (
+              <button
+                className="border border-blue-700 rounded-xl text-blue-700 font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-blue-700 hover:text-yellow-300 w-full"
+                disabled
+              >
+                <LoadingDots color="white" style="large" />
+              </button>
+            )}
           </div>
-          <textarea
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-            rows={4}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
-            placeholder={"e.g. " + defultDesc}
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+            toastOptions={{ duration: 2000 }}
           />
-
-          {!loading && (
-            <button
-              className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
-              onClick={(e) => generateDesc(e)}
-            >
-              呼唤当代艺术大神 &rarr;
-            </button>
-          )}
-          {loading && (
-            <button
-              className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
-              disabled
-            >
-              <LoadingDots color="white" style="large" />
-            </button>
-          )}
-        </div>
-        <Toaster
-          position="top-center"
-          reverseOrder={false}
-          toastOptions={{ duration: 2000 }}
-        />
-        <hr className="h-px bg-gray-700 border-1 dark:bg-gray-700" />
-        <div className="space-y-10 my-10">
-          {generatedDescs && (
-            <>
-              <div>
-                <h2 className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto">
-                  由当代艺术大神润色后的句子
-                </h2>
-              </div>
-              <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
-                <div
-                  className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
-                  onClick={() => {
-                    navigator.clipboard.writeText(generatedDescs);
-                    toast("Bio copied to clipboard", {
-                      icon: "✂️",
-                    });
-                  }}
-                >
-                  <p>{generatedDescs}</p>
+          <hr className="h-px bg-gray-700 border-1 dark:bg-gray-700" />
+          <div className="space-y-10 my-10">
+            {generatedDescs && (
+              <>
+                <div>
+                  <h2 className="sm:text-4xl text-3xl font-bold mx-auto">
+                    由当代艺术大神润色后的句子
+                  </h2>
                 </div>
-              </div>
-            </>
-          )}
-        </div>
-      </main>
-      <Footer />
+                <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
+                  <div
+                    className="p-4 transition cursor-copy border border-dotted border-blue-700"
+                    onClick={() => {
+                      navigator.clipboard.writeText(generatedDescs);
+                      toast("Bio copied to clipboard", {
+                        icon: "✂️",
+                      });
+                    }}
+                  >
+                    <p>{generatedDescs}</p>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
