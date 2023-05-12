@@ -113,7 +113,7 @@ const Home: NextPage = () => {
 
             {!loading && (
               <button
-                className="border border-blue-700 rounded-xl text-blue-700 font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-blue-700 hover:text-yellow-300 w-full"
+                className="px-5 py-2 font-medium text-blue-700 border border-b-4 border-r-4 border-blue-700 rounded-lg shadow-lg hover:shadow-sm"
                 onClick={(e) => generateDesc(e)}
               >
                 呼唤当代艺术大神 &rarr;
@@ -121,7 +121,7 @@ const Home: NextPage = () => {
             )}
             {loading && (
               <button
-                className="border border-blue-700 rounded-xl text-blue-700 font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-blue-700 hover:text-yellow-300 w-full"
+                className="px-5 py-2 font-medium text-blue-700 border border-b-4 border-r-4 border-blue-700 rounded-lg shadow-lg hover:shadow-sm"
                 disabled
               >
                 <LoadingDots color="white" style="large" />
