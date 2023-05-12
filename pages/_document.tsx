@@ -11,7 +11,7 @@ class MyDocument extends Document {
             content="将你的句子用当代艺术的语言输出"
           />
         </Head>
-        <body>
+        <body className="bg-yellow-300">
           <Main />
           <NextScript />
         </body>
