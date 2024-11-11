@@ -29,7 +29,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
 
   let counter = 0;
 
-  const res = await fetch("https://oneapi.lomohuang.me/v1/chat/completions", {
+  const res = await fetch("https://nextoken.cc/v1/chat/completions", {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${process.env.OPENAI_API_KEY ?? ""}`,
